@@ -1,0 +1,350 @@
+Estudos para a Certificação Java SE Programmer I
+
+Alura
+
+08/01/2017: o básico do java - defina o escopo das variáveis
+
+	- definição de escopos -> [existe de quando até quando]
+
+	- Escopos:
+
+		* variável local: declarada dentro de um método ou construtor; existe dentro do bloco onde foi criada ( entre as chaves )
+			
+			obs1: o parâmetro de um método também é uma variável local
+			
+			obs2: erro de compilação
+
+		* variável de instância ou variável de objeto ou atributo ou variável membro: declarada dentro da classe, pode ser acessada de qualquer lugar de dentro da classe
+
+		* variáveis de classe ou variáveis estáticas: acessadas a partir da instância ou da classe, ou seja, podem ser acessadas a partir de qualquer escopo ( qualquer lugar ) [ lembrar que os modificadores de acesso precisam ser respeitados ( private, public, protected e default ); é criada somente uma para todas as classes do mesmo tipo;
+			
+			obs1: não é possível ter duas variáveis com o mesmo nome no mesmo escopo. ( caso sejam declaradas duas variáveis com o mesmo nome no mesmo escopo, o java dará um erro de compilação )
+			
+			obs2: não é possível ter uma variável estática e uma variável de instância com o mesmo nome. ( erro de compilação )
+
+			obs3: é possível ter variáveis locais com o mesmo nome de uma variável estática ou de uma variável de instância. ( shadowing: capacidade de 'esconder' o acesso a uma das variáveis )
+
+09/01/2017: o básico do java - defina a estrutura de uma classe java
+
+	- Qual a estrutura de um arquivo e de uma classe java
+
+		1) pacote: opcional, só pode ter 1, deve ser a primeira informação
+		2) imports: vem após o pacote, caso ele exista. Pode-se ter vários.
+		3) classes, interfaces, enuns: vem após o pacote e os imports. E pode-se ter vários.
+		4) comentários: pode vir em qualquer lugar, inclusive antes do package
+			* Existe o comentários de uma linha -> /
+			* E o comentário de várias linhas -> /* */
+			* E o JavaDoc /** */
+
+		OBS1: todas as estruturas acima são opcionais, é estranho, mas é opcional. ( sim, o arquivo pode estar vazio )
+
+		OBS2: caso não exista a definição de pacote, o pacote da estrutura ( classe, interface ou enum ) é o padrão ( default ).
+
+		OBS3: caso exista a definição do pacote, deve estar dentro do respectivo diretório. Caso o pacote seja o padrão, o arquivo deve estar no diretório raíz.
+
+		OBS4: dentro de uma classe pode-se ter:  variáveis ( membros, atributos, de instância, de objetos), métodos( com ou sem variáveis locais), construtores ( com ou sem variáveis parâmetros ).
+		
+		OBS5: Pode-se ter dentro de uma classe uma variável com o mesmo nome da classe e com a mesma caixa ( maiúscula ) [ mesmo que fuja do padrão que é utilizar variáveis com títulos minuscilos capitulados]
+		
+		OBS6: Pode-se ter métodos com o mesmo nome da classe;
+		
+		OBS7: Construtores não têm retorno, porém pode haver dentro dele um 'retorn;' sem nada;
+
+		OBS8: Um arquivo pode conter várias classes, enuns, interfaces. Porém, somente 1 público. E caso tenha uma classe pública, o nome do arquivo deve ser o mesmo da classe.
+
+		OBS9: uma interface pode ter variáveis e métodos. As variaveis são, por padrão, final, static e public ; e os métodos são, por padrão, abstratos e públicos. Não é necessário informar, mas se o fizer, não tem problema.
+
+		OBS10: o pacotes e os imports serão aplicados, ou seja, os mesmos para todas as estruturas dentro do mesmo arquivo ( classe, interface, enum ).
+
+
+10/01/2017: o básico do java - crie aplicações java executáveis com um método main
+
+	- Qual a diferença de uma classe java normal e uma classe que pode ser executada pela linha de comando, ou seja, uma classe que tem o método main
+	
+		* toda classe que for criada para ser executada via linha de comando precisa ter um método main
+		
+		OBS.: para compilar um arquivo java -> javac NomeDoArquivo.java	
+			  para rodar um arquivo -> java NomeDaClasseQueTemOMetodoMain
+
+		* Regras do método main:
+		
+			1) Precisa ser public static void main(String[] args) {  }
+			2) Precisa retornar void
+			3) O parâmetro precisa ser um array de String
+				--> String[] args ou String args[]
+				--> String... args ( esses 3 pontinhos se chama varargs )
+			4) Não importa o nome da variável ( args ). Poderia ser bola, bolinha... não importa. Só precisa ter a tipagem correta ( Array de Strings )
+
+			5) Os parâmetros do método main são os argumentos passados na linha de comando
+				--> Parâmetro é o que vem depois do nome da classe
+				--> os parâmetros são separados por espaços
+				-->java MinhaClasse param1 param2
+	
+			6) O javac vem no JDK ( Java Development Kit )
+
+			7) Para rodar, basta baixar o JRE ( Java Runtime Environment ). O JRE tem a JVM ( Java Virtual Machine )
+
+			8) Quando o JDK já vem com o JRE junto
+
+			9) É possível informar a versão do java na hora de compilar	
+				--> javac -source 1.3 NomeDaClasse.java
+				--> javac -source 1.5 pacote/NomeDaClasse.java
+
+			10) Na hora que um arquivo java é compilado, tanto o diretório de saída quanto o nome dos arquivos que serão gerados dependem da classe.
+				--> Um arquivo com package 'certificacao' precisa estar dentro do diretorio 'certificacao';
+				--> Trabalhando com diretorios, tem que lembrar dos pacotes (package )
+
+			11) Para rodar uma classe que esta dentro de um pacote.
+
+			12) O nome de uma classe contém o pacote dela
+				--> pacote.NomeDaClasse
+				
+			13) É possível passar propriedades na linha de comando. Propriedades são diferentes de argumentos.
+				--> java -DnomedaPropriedade=valor -DnomeDeOutraPropriedade=valor pacote.Classe
+
+			14) COmo o Java encontra as classes? Há uma variável chamada 	CLASSPATH. Ela define onde o java vai procurar as classes e pacotes.
+
+			15) Por padrão o CLASSPATH é o diretório local.
+			
+			16) É possível mudar o valor do CLASSPATH através de variável do ambiente.
+
+			17) É possível passar uma lista de diretórios e/ou arquivos JAR no classpath.
+				--> no linux --> CLASSPATH=.:/usr/libraries/arquivo.jar:/usr/diretorio
+				--> no windows --> CLASSPATH=C:/xxxx;D:/dir
+
+			18) Os JARS são arquivos ZIP. E, sendo assim, é possível passar arquivos ZIP no valor do CLASSPATH
+			
+			19) É possível informar qual o CLASSPATH na execução da classe java
+				--> java -classpath . pacote.classe
+				--> java -cp . pacote.classe
+
+			20) É possível rodar o método main de uma classe que não é public ( pública ). Irá rodar tranquilamente.
+
+			21) Para compilar usa-se barra de navegação; para rodar usa-se ponto.
+				--> javac dir/arquivo.java
+				--> java pacote.arquivo
+
+11/01/2017: o básico do java - importe outros pacotes java e deixe-os acessíveis ao seu código
+
+	- Relação entre pacotes e quem pode acessar o quê
+		
+		1) Mesmo pacote
+
+		* Classes que estão no mesmo pacote podem se referenciar tranquilamente. Elas utilizam o nome simples das outras classes, ou seja, sem pacote;
+		
+		* O import neste caso pe opcional, pode ser utilizado ou não. Não é gerado erros.
+
+		OBS1.: quando é solicitada a compilação de uma classe X e ela tem referências de outras classes dentro dela, o java ( javac ) compila todas as classes ( a que foi solicitada e todas as referenciadas );
+
+		2) Pacotes diferentes
+
+		* Classes referenciadas que não estão no mesmo pacote precisam ser importadas;
+
+		OBS2: pode ser utilizado o nome completo ( sem import ) --> pacote.classe
+
+		OBS3: é preciso tomar cuidado com os modificadores
+
+		OBS4: para que uma classe possa ser referenciada por outra de um pacote diferente, a classe a ser referenciada precisa ser públic ( public )
+
+		OBS5: classes no pacote default só podem ser referenciadas por classes no pacote default;
+
+		OBS.: Classes do pacote default não podem acessar classes que não estão no pacote default;
+		
+		OBS6: o full qualified name é o pacote.nomeDaClasse
+
+		OBS7: não é possível importar duas classes com o mesmo nome. Dá erro de compilação.
+			--> java.util.Date
+			--> java.sql.Date
+
+		OBS8: a importação abaixo é permitida. Porém, quando for criado o objeto do tipo Date, é utilizado o específico ( java.sql.Date ) e não o geral ( java.util.Date )
+			--> java.util.*;
+			---> java.sql.Date;
+		
+		OBS9: a solução para usar as duas classes de Date ( java.util.Date e java.sql.Date ), no exemplo acima, é usar o full qualified name quando quiser instanciar o java.util.Date
+			--> Date data = new Date();   [ aqui é instanciado java.sql.Date ]
+			--> java.util.Date dataUtil = new java.util.Date();
+
+		OBS10: por convenção, o nome dos pacotes seguem as seguintes regras:
+			* letras minusculas;
+			* nome da empresa ao contrário ( br.com.empresa )
+			* nome do projeto
+
+				
+		OBS11: é possível utilizar o import de pacotes com o  mesmo nome de classe desde que se utilize  *. Porém, não será possível utilizar o simple name da classe.
+			--> import java.util.*;
+			--> import java.sql.*;
+			--> Date data = new Date() [ dá erro de compilação ]
+
+		OBS12: o import pacote.* só pode ser utilizados com tipos, não pacotes.
+			--> java.util.*; [ está correto, importa todos os tipos como java.util.Date ]
+			--> java.*; [ compila. Mas, não importa os tipos de, por exemplo, java.util.* ou java.sql.*. Somente é importado os tipos que estão dentro de java.* . ( interfaces, enuns, classes ) ]
+		
+		OBS13: import estático ( import static ) --> utilizado para importar variáveis e métodos estáticos ( assim, não precisa digitar Classe.variavelStatic ou Classe.metodoStatico ; só precisa chamar variavelStatic ou metodoStatico );
+		
+		OBS14: é possível utilizar import static pacote.*; ( aqui importa tudo que é estático do pacote )
+
+##################################################################################
+##################################################################################
+
+16/01/2017: tipos de dados - declarar e inicializar variáveis
+
+	* Tipada: tipo das variáveis explícitos
+	
+	OBS: no Java 8 tem o tipo implícito, mas não cai na certificação do Java 7
+	
+	* Declaração-> tipo nome;
+		--> int idade;
+
+	[ VARIÁVEIS LOCAIS ]
+		
+	* Variáveis locais não têm valor padrão
+	
+	* Variáveis precisam ter um valor atribuído antes de poder ser utilizada
+		--> Dá erro de compilação caso uma variável local não seja inicializada e esteja sendo utilizada;
+		
+	OBS.: variável local é aquela declarada dentro de um block ( método, construtor)
+	
+	[ VARIÁVEL MEMBRO ]
+	
+	* Variáveis memnbro tem valor padrão/inicial
+	
+		--> O valor padrão dos tipos numéricos é 0;
+		--> Os CHARS são no fundo, no fundo numéricos no java. O valor padrão dele é 0, porém não é impresso;
+		--> O valor padrão de um boolean é false;
+		--> O valor padrão de referências ( objetos ) é null;
+		
+	OBS.: Valores padrão são aplicáveis somente a variáveis membro, variáveis de instância, variáveis atributo...
+	
+	[ ARRAY ]
+	
+	* Os vetores tem o valor padrão compatívels com seus tipos
+		--> int[] valores = new int[10];
+			--> cada posição terá o valor padrão 0;
+	
+	[ Tipos primitivos ]
+
+	byte
+	short
+	char
+	int
+	long
+	float
+	double
+	
+	OBS.: todos os tipos primitivos são considerados numéricos, exceto o boolean;
+	
+	OBS.: o float e o double são os tipos com ponto flutuante;
+	
+	OBS.: o byte, short, int, long e char são numéricos do tipo inteiro
+	
+	OBS.: não existe no java tipos unsigned ou signed, ou seja, valores que ou são só positivos ou são só negativos; todos os tipos numéricos podem ser positivos e negativos;
+	
+	OBS.: não  é preciso decorar o tamanho dos tipos, exceto o do byte. O byte pode ter valores entre [ -128 ] e [ +127 ]
+	
+	OBS.: o char é o único tipo que só possui valores positivos ou 0 ( zero ), ou seja, seu valores são de [ 0 ] em diante...
+	
+	OBS.: short e char tem os mesmos tamanhos, porém char é só positivo, enquanto short pode ser de XXXX negativo até YYYY positivo;
+	
+	OBS.: variaveis´ flutuantes ( float e double ) podem assumir os seguitnes valores especiais:
+		--> [ + infinto ] ou [  - infinito ]
+		--> [ +0 ] ou [-0]
+		--> NaN [ lê-se: not a number ] ( número inválido )
+		
+	[ NÚMEROS LITERAIS ]
+	
+	* Somente tipos primitivos podem ter valores literais
+		--> int = 1590;
+	
+	* boolean
+		-> [false] e [true] são valores literais do tipo boolean
+		-> [ false ] e [ true ] precisam sempre estar em letras minúsculas
+			--> OBS.: todas as palavras reservadas são minúsculas
+	
+	* números inteiros
+		--> são considerados por padrão um int
+		--> ex: int x = 15;
+	
+	* números com ponto flutuante ( casa decimal )
+		--> são considerados por padrão dopuble
+		--> ex: double v=10.2;
+	
+	* É possível forçar o tipo adicionando uma letra no final
+		--> ex: long l = 13 ou long l = 13L ou long l = 13l;
+		--> float f = 13.1f ou float f = 13.1F;
+		--> double v = 10.2d ou double v = 10.2D;
+	
+	* É possível atribuir valores na base octal para inteiros
+		--> ex: int i = 0791;
+		--> int i = 010 [ número 8 na base decimal ]
+		--> não precisa fazer conversão de bases, só precisa saber os tipos e tipo, não existe o número 08 na base octal pq os caracteres são de 0 a 7 [ 0, 1 , 2 , 3, 4 , 5, 6, 7]
+	
+	* É possível também atribuir valores hexadecimais para inteiros
+		--> vai de 0 a 9 e A a F [ 0, 1, 2, 3, 4, 5, 6, 7, 8,3 9, A, B, C, D, E, F ]
+		--> int i = 0xA [ número 11 na base decimal]
+		--> não importa se o x é maiúsculo ou minusculo [ 0x ou 0X ] pq ambos são válidos
+		
+	* É possível também atribuir valores na base binária
+		--> Inicia com 0b ou 0B
+		--> ex: 0b01
+		--> ex: 0b1000
+	
+	* É possível representar ponto flutuante com representação cientifica
+		DOUBLE
+		--> ex: 3.1E2 = 3.1x10² = 3.1x100 = 310;
+		
+		FLOAT
+		--> ex: 2e3f = 2x10³ = 2x1000 = 2000;
+	
+	* Separação de grupos decimais
+		--> a partir da versão 7 é possível utilizar o _ para representar o separador de grupos.
+		--> ex: não se pode escrever --> long x2 = 1.234.567.891l
+				mas, pode-se --> long x2 = 1_234_567_891l
+		--> o [_] precisa estar entre números ou [_]
+			ex: _1_234_567_891 -> erro de compilação pq não tem valor antes do primeiro _
+		--> O _ pode vir do lado de outro _
+			ex: 1__234_567__896l
+			     0B1_00 [ pode ]
+				 0_b100 [ não pode ]
+				 0xF_F [ pode pq F tem valor de número ]
+				 0x_FF [ não pode ]
+		 
+	* Não há equivalência entre o número e a letro na tabela unico
+		ex: char letra = 'A';  --> imprime 'A'
+			char letra = 65; --> imprime 'A';
+			char sete = 7; --> imprime vazio;
+		
+		OBS.: Letra C > letra A
+			  Letras maiúsculas são maiores que as letras minúsculas
+			  
+	
+		--> se quiser atribuir um caracteres unicode é possível
+			ex: char xx = '\u03A9';
+			
+		
+	[ identificadores ]
+	
+	* são os nomes das variáveis, métodos, contrutores, classes, interfaces, pacotes...
+	
+	* Não é possível utilizar palavras reservadas
+		ex: boolean, public, class, static, void
+		OBS.: main pode ser utilizado
+		
+	* Não é possível utilizar valores literais ( true, false, null )
+	
+	* É possível utilizar caracteres unicode ( números, letras, caracteres especiais, $ e _ )
+		--> é possível usar: bonitão, peça, botinao04444$$, boni_to;
+		--> não pode: cas#tigo; [ cerquilha '#' não pode ser utilizado ]
+	
+	* O primeiro caractere não pode ser um número [ pode ser qualquer coisa, menos número ] ;
+	
+	* É case sensitive
+		ex: int idade;
+			int Idade;
+			int iDAde;
+	
+	
+	
+	
+	
+	
+	
