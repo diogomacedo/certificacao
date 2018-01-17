@@ -342,9 +342,91 @@ Alura
 			int Idade;
 			int iDAde;
 	
+17/01/2017: tipos de dados - diferenças entre variaveis de referência a objetos e tipos primitivos
+
+	* Variáveis primitivas possuem um valor
+		--> A operação de atribuição em variáveis do tipo primitivo faz uma cópia do valor
+			int a = 10;
+			int b = a;
+			* Aqui tanto [a] quanto [b] têm o valor 10
+			* É efetuada uma cópia do valor, ou seja, alterar [a] não alterará o valor de [b] e vice-versa
 	
+	* Variáveis de referência para objetos
+		--> A operação de atribuição em variaveis de referência cria uma nova referência
+			OBS.: Para criar um novo objeto é preciso usar o construtor
+			Objeto o1 = new Objeto(); [ criado um novo objeto ]
+			o1.valor = 10;
+			Objeto o2 = o1; [ a variável de referência aponta para o mesmo objeto que o1 ]
+			o1.valor+=15; [ somando o1 + 15 ]
+			System.out.println(o1.valor); [ imprime 25 ]
+			System.out.println(o2.valor); [ imprime 25 porque o2 referencia o mesmo objeto que o1 ]
+			Objeto o3 = new Objeto(); [ aqui está sendo criado um novo objeto ]
 	
+17/01/2017: tipos de dados - lendo ou escrevendo campos de objetos
+
+	[ como acessar variaveis membro , chamada normalmente de campos ]
+
+	* É possível acessar variáveis membros/estância diretamente dentro de um construtor, método. Para isso, basta escrever o nome delas
+
+		Ex: Class Carro {
+			String modelo;
+			int ano;
+			Carro() {
+				ano=2014;
+			}
+			void resetar() {
+				ano=2014;
+			}
+		}
 	
+	* É possível também utilizar a palavra reservadas [this] para acessar um membro da classe
+	
+		Ex: Carro(){
+				this.ano=2014;
+			}
+
+	* A palavra reservada [this] num método significa [a instância atual] e num construtor significa [o objeto que está sendo construído]
+	
+	* Em um método que não possua um parâmetro ( variável local ) com o mesmo nome da variável membro ( atributo ), o this é opcional . Exemplos acima.
+	
+	* O [ this ] se torna obrigatório em um construtor / método quando existe um parâmetro com o mesmo nome do atributo da classe.
+	
+		Ex: Carro(int ano) {
+			this.ano = ano;
+		}
+		void configurar(int ano) {
+			this.ano = ano;
+		}
+		void resetar() {
+			ano = 2014;
+		}
+
+	OBS.: Caso um modificador de acesso não seja atribuído a um membro de uma classe ( variável, método, construtor ), esse item é acessível a partir da referencia;
+	
+		Ex: Class Teste {
+			Carro carro = new Carro();
+			carro.ano=2017;
+			carro.configurar(2020);
+		}
+		
+17/01/2017: tipos de dados - o ciclo de vida de um objeto
+
+	* Quando é criado um objeto ?
+	* Quando um objeto deixa de ser referenciado da memória?
+	* Quando o objeto vai embora da memória ?
+	
+	* Um objeto é criado quando o construtor da classe é chamado
+	* Um objeto é criado quando é utilizado a palavra reservada [new]
+	
+	* Um objeto é acessível enquanto ele é referenciado por uma variável diretamente ou indiretamente;
+	
+	* Um objeto é inacessível quando não houver mais referências diretas ou indiretas
+	
+	* Um objeto pode ser excluído da memória pelo garbage collector ( GC ) a qualquer instante a partir do momento que ele se tornou inacessível
+	
+	* Por padrão, na especificação, não tem como saber quando o GC vai rodar
+	
+	OBS.: objetos referenciados indiretamente não são elegíveis ao GC
 	
 	
 	
