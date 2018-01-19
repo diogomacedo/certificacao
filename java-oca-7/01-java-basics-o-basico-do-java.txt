@@ -196,45 +196,48 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 
 			1) Classes referenciadas que não estão no mesmo pacote precisam ser importadas;
 
-			OBS2: pode ser utilizado o nome completo ( sem import ) --> pacote.classe
+			2) Pode ser utilizado o nome completo e, nesse caso, não precisa de import.
+				--> pacote.classe
 
-		OBS3: é preciso tomar cuidado com os modificadores
+			Obs#2: é preciso lembrar dos modificadores de acesso
 
-		OBS4: para que uma classe possa ser referenciada por outra de um pacote diferente, a classe a ser referenciada precisa ser públic ( public )
+		- Para que uma classe possa ser referenciada por outra class de um pacote diferente, a classe a ser referenciada precisa ser pública ( modificador de acesso public )
 
-		OBS5: classes no pacote default só podem ser referenciadas por classes no pacote default;
+		- Classes no pacote default só podem ser referenciadas por classes do pacote default;
 
-		OBS.: Classes do pacote default não podem acessar classes que não estão no pacote default;
+		- Classes do pacote default não podem acessar classes que não estão no pacote default;
 		
-		OBS6: o full qualified name é o pacote.nomeDaClasse
+		- O full qualified name é composto pelo pacote e nome da class
+			--> pacote.nomeDaClasse
 
-		OBS7: não é possível importar duas classes com o mesmo nome. Dá erro de compilação.
+		- Não é possível importar duas classes com o mesmo nome. Dá erro de compilação.
 			--> java.util.Date
 			--> java.sql.Date
 
-		OBS8: a importação abaixo é permitida. Porém, quando for criado o objeto do tipo Date, é utilizado o específico ( java.sql.Date ) e não o geral ( java.util.Date )
+		- A importação abaixo é permitida. Porém, quando for criado o objeto do tipo Date, é utilizado o específico ( java.sql.Date ) e não o geral ( java.util.Date )
 			--> java.util.*;
-			---> java.sql.Date;
+			--> java.sql.Date;
 		
-		OBS9: a solução para usar as duas classes de Date ( java.util.Date e java.sql.Date ), no exemplo acima, é usar o full qualified name quando quiser instanciar o java.util.Date
+		- A solução para usar as duas classes "Date" ( java.util.Date e java.sql.Date ), no exemplo acima, é usar o full qualified name quando quiser instanciar o java.util.Date
 			--> Date data = new Date();   [ aqui é instanciado java.sql.Date ]
 			--> java.util.Date dataUtil = new java.util.Date();
 
-		OBS10: por convenção, o nome dos pacotes seguem as seguintes regras:
-			* letras minusculas;
-			* nome da empresa ao contrário ( br.com.empresa )
-			* nome do projeto
+		- Por convenção, o nome dos pacotes seguem as seguintes regras:
+			
+			1) Letras minúsculas;
+			2) Nome da empresa ao contrário ( br.com.empresa )
+			3) Nome do projeto
 
-				
-		OBS11: é possível utilizar o import de pacotes com o  mesmo nome de classe desde que se utilize  *. Porém, não será possível utilizar o simple name da classe.
+		- É possível utilizar o import de pacotes com o  mesmo nome de classe desde que se utilize  *. Porém, não será possível utilizar o simple name da classe.
 			--> import java.util.*;
 			--> import java.sql.*;
 			--> Date data = new Date() [ dá erro de compilação ]
 
-		OBS12: o import pacote.* só pode ser utilizados com tipos, não pacotes.
-			--> java.util.*; [ está correto, importa todos os tipos como java.util.Date ]
-			--> java.*; [ compila. Mas, não importa os tipos de, por exemplo, java.util.* ou java.sql.*. Somente é importado os tipos que estão dentro de java.* . ( interfaces, enuns, classes ) ]
+		- O import "pacote.*" só pode ser utilizados com tipos, não pacotes.
+			--> java.util.*; [ está correto, importa todos os tipos (classes, interfaces, enuns) ] { java.util.Date }
+			--> java.*; [ Compila, mas, não importa os tipos de, por exemplo, java.util.* ou java.sql.*. Somente é importado os tipos que estão dentro de java.* . ( interfaces, enuns, classes ) ]
 		
-		OBS13: import estático ( import static ) --> utilizado para importar variáveis e métodos estáticos ( assim, não precisa digitar Classe.variavelStatic ou Classe.metodoStatico ; só precisa chamar variavelStatic ou metodoStatico );
+		- O import estático ( import static ) é utilizado para importar variáveis e métodos estáticos. Esse tipo de importe evita precisar digitar "Classe.variavelEstatica" ou "Classe.metodoEstatico" o tempo todo. Daí, para chamar a variável ou método estático, só precisa utilizar o nome da variável ou do método;
 		
-		OBS14: é possível utilizar import static pacote.*; ( aqui importa tudo que é estático do pacote )
+		- É possível utilizar import static pacote.*; ( aqui importa tudo que é estático do pacote )
+
