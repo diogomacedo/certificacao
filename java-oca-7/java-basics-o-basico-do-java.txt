@@ -1,0 +1,240 @@
+
+Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
+
+08/01/2017: o básico do java - defina o escopo das variáveis
+
+	* Tópico da certificação: "Java Basics, define the scope of variables"
+
+	* Escopo
+
+		- Definição: uma variável existe de quando até quando
+
+		- Tipos:
+
+			1) Variável local:
+
+				a) É declarada dentro de um método ou construtor;
+				b) Existe dentro do bloco onde foi criada ( entre as chaves );
+
+				Obs#1: Os parâmetros de um método X também são variáveis locais
+				Obs#2: erro de compilação
+
+			2) Variável de instância
+
+				a) Também é conhecida como:
+					--> Variável de objeto;
+					--> Atributo;
+					--> Variável membro
+
+				b) É declarada dentro da classe;
+				c) Pode ser acessada de qualquer lugar de dentro da classe;
+
+			3) Variável de classe
+
+				a) Também é conhecida como 'variável estática';
+				b) É acessadas a partir da instância ou da própria classe;
+				c) Podem ser acessadas a partir de qualquer escopo ( qualquer lugar );
+
+				Obs#1: lembrar que os modificadores de acesso precisam ser respeitados ( private, public, protected e default );
+
+				d) É criada somente uma para todas as referências de classes de mesmo tipo;
+
+		- Não é possível ter duas variáveis com o mesmo nome no mesmo escopo. Caso sejam declaradas duas variáveis com o mesmo nome no mesmo escopo, o java dará um erro de compilação
+
+		- Não é possível ter uma variável estática e uma variável de instância com o mesmo nome ( erro de compilação )
+
+		- É possível ter variáveis locais com o mesmo nome de uma variável estática ou de uma variável de instância ( shadowing: capacidade de 'esconder' o acesso a uma das variáveis )
+
+
+
+09/01/2017: o básico do java - defina a estrutura de uma classe java
+
+	* Tópico da certificação: "Java Basics, define the structure of a Java class"
+
+	* Segue abaixo a estrutura de um arquivo java
+
+		- Pacote: opcional, só pode ter 1, deve ser a primeira informação
+
+		- Imports: vem após o pacote, caso ele exista. Pode-se ter vários
+
+		- Classes, Interfaces, Enuns: vem após o pacote e os imports. E pode-se ter vários.
+
+		- Comentários: pode vir em qualquer lugar, inclusive antes do package:
+			1) Existe o comentários de uma linha -> /
+			2) E o comentário de várias linhas -> /* */
+			3) E o JavaDoc /** */
+
+	* Todas as estruturas citadas no tópico acima são opcionais, é estranho, mas é opcional. ( sim, o arquivo pode estar vazio )
+
+	* Caso não exista a definição de pacote, o pacote da estrutura ( classe, interface ou enum ) é o padrão ( default )
+
+	* Caso exista a definição do pacote, o arquivo deve estar dentro do respectivo diretório
+
+	* Caso o pacote seja o padrão, o arquivo deve estar no diretório raíz
+
+	* Dentro de uma classe pode-se ter:
+
+		- Variáveis de instância
+		- Métodos ( com ou sem variáveis locais [ que são os parâmetros ] ),
+		- Construtores ( com ou sem variáveis locais [ que são os parâmetros ] ).
+
+	* Pode-se ter dentro de uma classe uma variável com o mesmo nome da classe - inclusive com a mesma caixa ( maiúscula ) [ mesmo que fuja do padrão que é utilizar variáveis com títulos minúsculos capitulados ]
+
+	* Pode-se ter métodos com o mesmo nome da classe;
+
+	* Construtores não têm retorno, porém pode haver dentro dele um 'return;' sem nada;
+
+	* Um arquivo pode conter várias classes, enuns, interfaces. Porém, somente 1 deles pode ser público;
+
+	* Caso um arquivo tenha uma estrutura pública ( classe, enum, interface), o nome do arquivo deve ser o mesmo dessa estrutura;
+
+	* Uma interface pode ter variáveis e métodos, porém:
+		- As variáveis são, por padrão, final, static e public;
+		- Os métodos são, por padrão, abstratos e públicos;
+		- Não é necessário informar essas características, mas se o fizer, não tem problema.
+		
+	* O pacote e os imports serão aplicados para todas as estruturas dentro de um mesmo arquivo ( Classe, Interface, Enum );
+
+
+
+10/01/2017: o básico do java - crie aplicações java executáveis com um método main
+
+	* Tópico da certificação: "Java Basics, create executable Java applications with a main method"
+
+	* Toda classe que for criada para ser executada via linha de comando precisa ter um método main
+
+	* O método main precisa seguir as seguintes regras:
+
+		- Precisa ser public static void main(String[] args) {  }
+
+		- Precisa retornar void
+
+		- O parâmetro precisa ser um array de String
+
+			1) String[] args ou String args[]
+
+			2) String... args ( esses 3 pontinhos se chama varargs )
+
+			3) Não importa o nome da variável ( args ). Poderia ser bola, bolinha... não importa. Só precisa ter a tipagem correta ( Array de Strings )
+
+	* Os parâmetros do método main são os argumentos passados na linha de comando
+
+		- Parâmetro é o que vem depois do nome da classe
+
+		- Os parâmetros são separados por espaços
+
+		- Para executar uma classe java via linha de comando passando parâmetro
+			--> java MinhaClasse param1 param2
+
+	* O  compilador java (javac) vem somente dentro do JDK ( Java Development Kit )
+		--> para compilar um arquivo java via linha de comando -> javac NomeDoArquivo.java	
+
+	* Para executar uma classe Java não é necessário ter o JDK, somente o JRE ( Java Runtime Environment ) é necessário. O JRE é quem tem a JVM ( Java Virtual Machine )
+		--> para rodar um arquivo java via linha de comando -> java NomeDaClasseQueTemOMetodoMain
+
+	* O JDK vem com o JRE junto
+
+	* É possível informar a versão do java na hora de compilar
+		--> javac -source 1.5 NomeDaClasse.java
+		--> javac -source 1.7 pacote/NomeDaClasse.java
+
+	* Na hora que um arquivo java é compilado, tanto o diretório de saída quanto o nome dos arquivos que serão gerados dependem da classe.
+
+	* Um arquivo com package 'certificacao' precisa estar dentro do diretorio 'certificacao';
+
+	* Trabalhando com diretorios, tem que lembrar dos pacotes (package )
+
+	* O nome de uma classe contém o pacote dela
+		--> pacote.NomeDaClasse
+
+	* É possível passar propriedades na linha de comando
+		--> java -DnomedaPropriedade=valor -DnomeDeOutraPropriedade=valor pacote.Classe
+
+	* Propriedades são diferentes de argumentos.
+
+	* Como o Java encontra as classes? Há uma variável chamada CLASSPATH. Ela define onde o java vai procurar as classes e pacotes.
+
+		- Por padrão o CLASSPATH é o diretório local.
+
+		- É possível mudar o valor do CLASSPATH através de variável do ambiente.
+
+		- É possível passar uma lista de diretórios e/ou arquivos JAR no classpath.
+			--> no linux --> CLASSPATH=.:/usr/libraries/arquivo.jar:/usr/diretorio
+			--> no windows --> CLASSPATH=C:/xxxx;D:/dir
+
+		- Os JARS são arquivos ZIP. E, sendo assim, é possível passar arquivos ZIP no valor do CLASSPATH
+
+		- É possível informar qual o CLASSPATH na execução da classe java
+			--> java -classpath . pacote.classe
+			--> java -cp . pacote.classe
+
+	* É possível executar o método main de uma classe que não é pública ( public )
+
+	* Para compilar um arquivo java usa-se barra de navegação para representar o pacote
+		--> javac dir/arquivo.java
+
+	* Para executar um arquivo java usa-se o ponto na representação do pacote
+		--> java pacote.arquivo
+
+
+
+11/01/2017: o básico do java - importe outros pacotes java e deixe-os acessíveis ao seu código
+
+	* Tópico da certificação: "Java Basics, import other Java packages to make them accessible in your code"
+
+	* Relação entre pacotes e quem pode acessar o quê:
+
+		- Classes no mesmo pacote
+
+			1) Classes que estão no mesmo pacote podem se referenciar tranquilamente. Elas utilizam o nome simples uma das outras, ou seja, sem pacote;
+
+			2) O import neste caso é opcional, pode ser utilizado ou não. Não gera erros adicionar o import ou não.
+
+			Obs#1: quando é solicitada a compilação de uma classe X e ela tem referências de outras classes dentro dela, o compilador java compila todas as classes ( a que foi solicitada e todas as referenciadas );
+
+		- Classes em pacotes diferentes
+
+			1) Classes referenciadas que não estão no mesmo pacote precisam ser importadas;
+
+			OBS2: pode ser utilizado o nome completo ( sem import ) --> pacote.classe
+
+		OBS3: é preciso tomar cuidado com os modificadores
+
+		OBS4: para que uma classe possa ser referenciada por outra de um pacote diferente, a classe a ser referenciada precisa ser públic ( public )
+
+		OBS5: classes no pacote default só podem ser referenciadas por classes no pacote default;
+
+		OBS.: Classes do pacote default não podem acessar classes que não estão no pacote default;
+		
+		OBS6: o full qualified name é o pacote.nomeDaClasse
+
+		OBS7: não é possível importar duas classes com o mesmo nome. Dá erro de compilação.
+			--> java.util.Date
+			--> java.sql.Date
+
+		OBS8: a importação abaixo é permitida. Porém, quando for criado o objeto do tipo Date, é utilizado o específico ( java.sql.Date ) e não o geral ( java.util.Date )
+			--> java.util.*;
+			---> java.sql.Date;
+		
+		OBS9: a solução para usar as duas classes de Date ( java.util.Date e java.sql.Date ), no exemplo acima, é usar o full qualified name quando quiser instanciar o java.util.Date
+			--> Date data = new Date();   [ aqui é instanciado java.sql.Date ]
+			--> java.util.Date dataUtil = new java.util.Date();
+
+		OBS10: por convenção, o nome dos pacotes seguem as seguintes regras:
+			* letras minusculas;
+			* nome da empresa ao contrário ( br.com.empresa )
+			* nome do projeto
+
+				
+		OBS11: é possível utilizar o import de pacotes com o  mesmo nome de classe desde que se utilize  *. Porém, não será possível utilizar o simple name da classe.
+			--> import java.util.*;
+			--> import java.sql.*;
+			--> Date data = new Date() [ dá erro de compilação ]
+
+		OBS12: o import pacote.* só pode ser utilizados com tipos, não pacotes.
+			--> java.util.*; [ está correto, importa todos os tipos como java.util.Date ]
+			--> java.*; [ compila. Mas, não importa os tipos de, por exemplo, java.util.* ou java.sql.*. Somente é importado os tipos que estão dentro de java.* . ( interfaces, enuns, classes ) ]
+		
+		OBS13: import estático ( import static ) --> utilizado para importar variáveis e métodos estáticos ( assim, não precisa digitar Classe.variavelStatic ou Classe.metodoStatico ; só precisa chamar variavelStatic ou metodoStatico );
+		
+		OBS14: é possível utilizar import static pacote.*; ( aqui importa tudo que é estático do pacote )
