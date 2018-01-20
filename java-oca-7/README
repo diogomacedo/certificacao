@@ -1,121 +1,134 @@
 
-
-
 Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 
 
-##################################################################################
-##################################################################################
-
 16/01/2017: tipos de dados - declarar e inicializar variáveis
 
-	* Tipada: tipo das variáveis explícitos
-	
-	OBS: no Java 8 tem o tipo implícito, mas não cai na certificação do Java 7
-	
-	* Declaração-> tipo nome;
-		--> int idade;
+	* Tópico da certificação: "working with java data types - declare and initialize variables"
 
-	[ VARIÁVEIS LOCAIS ]
-		
-	* Variáveis locais não têm valor padrão
-	
-	* Variáveis precisam ter um valor atribuído antes de poder ser utilizada
-		--> Dá erro de compilação caso uma variável local não seja inicializada e esteja sendo utilizada;
-		
-	OBS.: variável local é aquela declarada dentro de um block ( método, construtor)
-	
-	[ VARIÁVEL MEMBRO ]
-	
-	* Variáveis memnbro tem valor padrão/inicial
-	
-		--> O valor padrão dos tipos numéricos é 0;
-		--> Os CHARS são no fundo, no fundo numéricos no java. O valor padrão dele é 0, porém não é impresso;
-		--> O valor padrão de um boolean é false;
-		--> O valor padrão de referências ( objetos ) é null;
-		
-	OBS.: Valores padrão são aplicáveis somente a variáveis membro, variáveis de instância, variáveis atributo...
-	
-	[ ARRAY ]
-	
-	* Os vetores tem o valor padrão compatívels com seus tipos
-		--> int[] valores = new int[10];
-			--> cada posição terá o valor padrão 0;
-	
-	[ Tipos primitivos ]
+	* As variáveis no java são tipada, ou seja, o tipo de dado das variáveis são explícitos
 
-	byte
-	short
-	char
-	int
-	long
-	float
-	double
-	
-	OBS.: todos os tipos primitivos são considerados numéricos, exceto o boolean;
-	
-	OBS.: o float e o double são os tipos com ponto flutuante;
-	
-	OBS.: o byte, short, int, long e char são numéricos do tipo inteiro
-	
-	OBS.: não existe no java tipos unsigned ou signed, ou seja, valores que ou são só positivos ou são só negativos; todos os tipos numéricos podem ser positivos e negativos;
-	
-	OBS.: não  é preciso decorar o tamanho dos tipos, exceto o do byte. O byte pode ter valores entre [ -128 ] e [ +127 ]
-	
-	OBS.: o char é o único tipo que só possui valores positivos ou 0 ( zero ), ou seja, seu valores são de [ 0 ] em diante...
-	
-	OBS.: short e char tem os mesmos tamanhos, porém char é só positivo, enquanto short pode ser de XXXX negativo até YYYY positivo;
-	
-	OBS.: variaveis´ flutuantes ( float e double ) podem assumir os seguitnes valores especiais:
-		--> [ + infinto ] ou [  - infinito ]
-		--> [ +0 ] ou [-0]
-		--> NaN [ lê-se: not a number ] ( número inválido )
-		
-	[ NÚMEROS LITERAIS ]
-	
-	* Somente tipos primitivos podem ter valores literais
-		--> int = 1590;
-	
-	* boolean
-		-> [false] e [true] são valores literais do tipo boolean
-		-> [ false ] e [ true ] precisam sempre estar em letras minúsculas
-			--> OBS.: todas as palavras reservadas são minúsculas
-	
-	* números inteiros
-		--> são considerados por padrão um int
-		--> ex: int x = 15;
-	
-	* números com ponto flutuante ( casa decimal )
-		--> são considerados por padrão dopuble
-		--> ex: double v=10.2;
-	
-	* É possível forçar o tipo adicionando uma letra no final
-		--> ex: long l = 13 ou long l = 13L ou long l = 13l;
-		--> float f = 13.1f ou float f = 13.1F;
-		--> double v = 10.2d ou double v = 10.2D;
-	
-	* É possível atribuir valores na base octal para inteiros
-		--> ex: int i = 0791;
-		--> int i = 010 [ número 8 na base decimal ]
-		--> não precisa fazer conversão de bases, só precisa saber os tipos e tipo, não existe o número 08 na base octal pq os caracteres são de 0 a 7 [ 0, 1 , 2 , 3, 4 , 5, 6, 7]
-	
-	* É possível também atribuir valores hexadecimais para inteiros
-		--> vai de 0 a 9 e A a F [ 0, 1, 2, 3, 4, 5, 6, 7, 8,3 9, A, B, C, D, E, F ]
-		--> int i = 0xA [ número 11 na base decimal]
-		--> não importa se o x é maiúsculo ou minusculo [ 0x ou 0X ] pq ambos são válidos
-		
-	* É possível também atribuir valores na base binária
-		--> Inicia com 0b ou 0B
-		--> ex: 0b01
-		--> ex: 0b1000
-	
-	* É possível representar ponto flutuante com representação cientifica
-		DOUBLE
-		--> ex: 3.1E2 = 3.1x10² = 3.1x100 = 310;
-		
-		FLOAT
-		--> ex: 2e3f = 2x10³ = 2x1000 = 2000;
-	
+		- Para se declarar uma variável no java se usa o tipo seguido do nome (identificador);
+			--> int idade;
+
+		Obs#1: no java 8 tem o tipo implícito, mas não cai na certificação do Java 7
+
+	* Tipos de variáveis
+
+		- Variáveis locais
+
+			1) É aquela declarada dentro de um bloco ( método, construtor, laço, condicional )
+
+			1) Não têm valor padrão
+
+			2) As variáveis locais precisam ter um valor atribuído antes de poder serem utilizadas
+
+			Obs#2: Caso as variáveis locais não sejam inicializadas e estejam sendo utilizadas, é gerado um erro de compilação;
+
+		- Variáveis membro
+
+			1) Também são conhecidas como:
+				a) Variáveis de instância
+				b) Atributos
+				c) Variáveis de objeto
+
+			2) São declaradas dentro da estrutura ( classe, interface, enum)
+
+			3) Têm um valor padrão/inicial
+
+				a) Os tipos numéricos tem valor padrão 0;
+				b) Os chars têm valor padrão 0;
+
+				Obs#3: Os chars são no fundo, no fundo numéricos no java. Porém, quando impressos, são convertidos em texto. Sendo assim, o '0' seria equivalente a uma String vazia '';
+
+				c) Os booleans tem valor padrão false;
+				d) Os objetos ( variáveis de referência ) tem valor padrão null;
+
+				Obs#4: Os valores padrões são aplicáveis somente a variáveis membro
+
+		- Vetores ( arrays )
+
+			1) Os vetores têm os seus valores padrão compatíveis com seus tipo
+				--> int[] valores = new int[10]; ( cada posição terá o valor padrão 0 }
+
+		- Tipos primitivos
+
+			1) São 7 os tipos primitivos:
+				a) byte
+				b) short
+				c) char
+				d) int
+				e) long
+				f) float
+				g) double
+
+			2) Todos os tipos primitivos são numéricos com exceção do boolean;
+
+			3) O float e o double são os tipos numéricos com ponto flutuante;
+
+			4) O byte, short, int, long e char são os tipos numéricos inteiro
+
+			5) Não existe no java os tipos unsigned ou signed, ou seja, tipos que ou são só positivos ou são só negativos;
+
+			6) Todos os tipos numéricos podem ser positivos e negativos
+
+			Obs#5: Não é necessário decorar o tamanho dos tipos, exceto o do byte
+
+			7) O byte pode ter valores entre [ -128 ] e [ +127 ]. É o tipo com menor comprimento.
+
+			8) O char, na prática, é o único tipo que só possui valores positivos ou 0 ( zero ), ou seja, seu valores são de [ 0 ] em diante...
+
+			9) O short e char tem os mesmos tamanhos, porém char é só positivo, enquanto short pode ser de XXXX negativo até YYYY positivo;
+
+			10) Os tipos flutuantes ( float e double ) podem assumir os seguintes valores especiais:
+				a) [ + infinto ] ou [ - infinito ]
+				b) [ +0 ] ou [-0]
+				c) NaN [ lê-se: not a number ] ( número inválido )
+
+		- Números literais
+
+			1) Somente tipos primitivos podem ter valores literais
+				--> int = 1590;
+
+			2) Boolean
+				a) [false] e [true] são valores literais do tipo boolean
+				b) [false] e [true] precisam sempre estar em letras minúsculas
+
+				Obs#1: Todas as palavras reservadas são minúsculas
+
+			3) Números inteiros
+				a) São considerados por padrão um int
+					--> ex: int x = 15;
+
+			4) Números com ponto flutuante ( casa decimal )
+				a) São considerados por padrão double
+					--> ex: double v = 10.2;
+
+			5) É possível forçar o tipo adicionando uma letra no final
+				--> ex: long l = 13 ou long l = 13L ou long l = 13l;
+				--> float f = 13.1f ou float f = 13.1F;
+				--> double v = 10.2d ou double v = 10.2D;
+
+			6) É possível atribuir valores na base octal para inteiros
+				--> ex: int i = 0791;
+				--> int i = 010 [ número 8 na base decimal ]
+
+				Obs#2: Não precisa fazer conversão de bases, só precisa saber os tipos e, por exemplo, não existe o número 08 na base octal pq os caracteres são de 0 a 7 [ 0, 1 , 2 , 3, 4 , 5, 6, 7]
+
+			7) É possível também atribuir valores hexadecimais para inteiros
+				a) Vai de 0 a 9 e A a F [ 0, 1, 2, 3, 4, 5, 6, 7, 8,3 9, A, B, C, D, E, F ]
+					--> int i = 0xA [ número 11 na base decimal]
+					Obs#3: Não importa se o [x] é maiúsculo ou minusculo [ 0x ou 0X ] pq ambos são válidos
+
+			8) É possível também atribuir valores na base binária
+				a) Inicia com 0b ou 0B
+					--> ex: 0b01
+					--> ex: 0b1000
+
+			9) É possível representar ponto flutuante com representação cientifica
+				--> DOUBLE --> 3.1E2 = 3.1x10² = 3.1x100 = 310;
+				--> FLOAT  --> ex: 2e3f = 2x10³ = 2x1000 = 2000;
+
 	* Separação de grupos decimais
 		--> a partir da versão 7 é possível utilizar o _ para representar o separador de grupos.
 		--> ex: não se pode escrever --> long x2 = 1.234.567.891l
