@@ -145,40 +145,47 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 				--> 0xF_F [ pode pq F tem valor de número ]
 				--> 0x_FF [ não pode ]
 
-			* Não há equivalência entre o número e a letra na tabela unico
-		ex: char letra = 'A';  --> imprime 'A'
-			char letra = 65; --> imprime 'A';
-			char sete = 7; --> imprime vazio;
-		
-		OBS.: Letra C > letra A
-			  Letras maiúsculas são maiores que as letras minúsculas
-			  
-	
-		--> se quiser atribuir um caracteres unicode é possível
-			ex: char xx = '\u03A9';
-			
-		
-	[ identificadores ]
-	
-	* são os nomes das variáveis, métodos, contrutores, classes, interfaces, pacotes...
-	
-	* Não é possível utilizar palavras reservadas
-		ex: boolean, public, class, static, void
-		OBS.: main pode ser utilizado
-		
-	* Não é possível utilizar valores literais ( true, false, null )
-	
-	* É possível utilizar caracteres unicode ( números, letras, caracteres especiais, $ e _ )
-		--> é possível usar: bonitão, peça, botinao04444$$, boni_to;
-		--> não pode: cas#tigo; [ cerquilha '#' não pode ser utilizado ]
-	
-	* O primeiro caractere não pode ser um número [ pode ser qualquer coisa, menos número ] ;
-	
-	* É case sensitive
-		ex: int idade;
-			int Idade;
-			int iDAde;
-	
+		- Não há equivalência entre o número e a letra na tabela ASC
+                --> char letra = 'A';  --> imprime 'A'
+                --> char letra = 65; --> imprime 'A';
+                --> char sete = 7; --> imprime vazio;
+
+        - É possível comparar caracteres pois eles são números ( tabela ASC )
+            --> c > a
+
+            Obs#3: Letras maiúsculas são maiores que as letras minúsculas
+
+        - É possível atribuir um caracteres a partir do seu código unicode
+            --> char xx = '\u03A9';
+
+
+        - Identificadores
+
+            1) São os nomes das variáveis, métodos, contrutores, classes, interfaces, pacotes...
+
+            2) Não é possível utilizar palavras reservadas
+                --> boolean, public, class, static, void
+
+            Obs#4: main não é uma palavra reservada, portanto pode ser utilizado
+
+            3) Não é possível utilizar valores literais ( true, false, null )
+
+            4) É possível utilizar caracteres unicode ( números, letras, caracteres especiais, $ e _ )
+                --> bonitão, peça, botinao04444$$, boni_to;
+
+            5) Não é possível caracteres especiais
+                --> cas#tigo; [ cerquilha '#' não pode ser utilizado ]
+
+            6) O primeiro caractere não pode ser um número [ pode ser qualquer coisa, menos número ] ;
+
+            7) É case sensitive
+                --> int idade;
+                --> int Idade;
+                -->int iDAde;
+
+                Obs#5: todas as variáveis exemplificadas acima são válidas. E elas são todas diferentes umas das outras;
+
+
 17/01/2017: tipos de dados - diferenças entre variaveis de referência a objetos e tipos primitivos
 
 	* Variáveis primitivas possuem um valor
