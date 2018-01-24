@@ -110,7 +110,7 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 				--> double v = 10.2d ou double v = 10.2D;
 
 			6) É possível atribuir valores na base octal para inteiros
-				--> ex: int i = 0791;
+				--> ex: int i = 0771;
 				--> int i = 010 [ número 8 na base decimal ]
 
 				Obs#2: Não precisa fazer conversão de bases, só precisa saber os tipos e, por exemplo, não existe o número 08 na base octal pq os caracteres são de 0 a 7 [ 0, 1 , 2 , 3, 4 , 5, 6, 7]
@@ -129,20 +129,23 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 				--> DOUBLE --> 3.1E2 = 3.1x10² = 3.1x100 = 310;
 				--> FLOAT  --> ex: 2e3f = 2x10³ = 2x1000 = 2000;
 
-	* Separação de grupos decimais
-		--> a partir da versão 7 é possível utilizar o _ para representar o separador de grupos.
-		--> ex: não se pode escrever --> long x2 = 1.234.567.891l
-				mas, pode-se --> long x2 = 1_234_567_891l
-		--> o [_] precisa estar entre números ou [_]
-			ex: _1_234_567_891 -> erro de compilação pq não tem valor antes do primeiro _
-		--> O _ pode vir do lado de outro _
-			ex: 1__234_567__896l
-			     0B1_00 [ pode ]
-				 0_b100 [ não pode ]
-				 0xF_F [ pode pq F tem valor de número ]
-				 0x_FF [ não pode ]
-		 
-	* Não há equivalência entre o número e a letro na tabela unico
+		- Separador de grupos
+
+			1) A partir da java v7 é possível utilizar o "_" para representar o separador de grupos.
+				--> long x2 = 1_234_567_891l
+
+			Obs#1: o java não permite escrever:
+					--> long x2 = 1.234.567.891l
+
+			Obs#2: o "_" precisa estar entre números ou entre outros "_"
+				--> _1_234_567_891 [ não é permitido. erro de compilação ]
+				--> 1__234_567__896l
+				--> 0B1_00 [ pode ]
+				--> 0_b100 [ não pode ]
+				--> 0xF_F [ pode pq F tem valor de número ]
+				--> 0x_FF [ não pode ]
+
+			* Não há equivalência entre o número e a letra na tabela unico
 		ex: char letra = 'A';  --> imprime 'A'
 			char letra = 65; --> imprime 'A';
 			char sete = 7; --> imprime vazio;
@@ -262,5 +265,41 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 	
 	OBS.: objetos referenciados indiretamente não são elegíveis ao GC
 	
-	
-	
+
+23/01/2017: tipos de dados - chamadas de métodos nos objetos
+
+    * Call methods on objects
+
+    * Para invocar um método de um objeto é utilizado o operador '.' ( ponto );
+
+    Obs#0: Toda as vezes que é desejado acessar um membro de um objeto, é utilizado o operador '.'. Esse membro pode ser um método ou uma variável;
+
+    * Quando um método que tem parâmetros é invocado, é obrigatório informar todos os parâmetros ( se mais de um, separado por vírgula ).
+
+    Obs#1: Se for informada/passada a quantidade errada de parâmetros, é gerado um erro de compilação;
+
+    Obs#2: é posível ter quebra de linha entre o tipo do parâmetro e o nome, entre um parâmetro e outro. Não há problema com isso.
+
+    Obs#3: Os parâmetros também são chamados de argumentos;
+
+    Obs#4: Quando se deseja ter uma quantidade variável de argumentos/parâmetros, é possível utilizar o varargs;
+
+    Obs#5: O varargs é um array, ou seja, possui a propriedade length e é possível iterar nele através de um laço de repetição;
+
+    Obs#6: Quando o varargs é utilizado, há a possibilidade de receber nenhum argumento ( 0 argumentos );
+
+    Obs#7: Não dá para misturar tipos de dados usando varargs. O Varargs é utilizado apenas para quantidade variável de argumentos;
+
+    Obs#8: O Varargs deve ser o último argumento/parâmetro do método;
+        --> Caso ele seja colocado numa posição diferente disso, é gerado um erro de compilação;
+
+    Obs#9: um varargs é um array, mas um array não é um varargs;
+        --> Porém, é possível passar um array quando o método espera um varargs - o contrário não;
+
+    Obs#10: A ordem dos argumentos devem ser mantidas, caso contrário, é gerado um erro na compilação;
+
+    * Quando um método que tem um dado de retorno é invocado, não é obrigatório fazer uso do dado retornado;
+
+    * Quando se desejar chamar um método B dentro de um método A, ambos pertencem a mesma classe, não precisa utilizar o 'this.', ou seja, pode-se chamar diretamente o método pelo nome dele;
+
+    
