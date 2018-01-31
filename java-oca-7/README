@@ -146,47 +146,50 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 				--> 0x_FF [ não pode ]
 
 		- Não há equivalência entre o número e a letra na tabela ASC
-                --> char letra = 'A';  --> imprime 'A'
-                --> char letra = 65; --> imprime 'A';
-                --> char sete = 7; --> imprime vazio;
+				--> char letra = 'A';  --> imprime 'A'
+				--> char letra = 65; --> imprime 'A';
+				--> char sete = 7; --> imprime vazio;
 
-        - É possível comparar caracteres pois eles são números ( tabela ASC )
-            --> c > a
+		- É possível comparar caracteres pois eles são números conforme é possível ver na tabela ASC
+			--> c > a
 
-            Obs#3: Letras maiúsculas são maiores que as letras minúsculas
+			Obs#3: Letras maiúsculas são maiores que as letras minúsculas
 
-        - É possível atribuir um caracteres a partir do seu código unicode
-            --> char xx = '\u03A9';
+		- É possível atribuir um caracteres a partir do seu código unicode
+			--> char xx = '\u03A9';
 
 
-        - Identificadores
+		- Identificadores
 
-            1) São os nomes das variáveis, métodos, contrutores, classes, interfaces, pacotes...
+			1) São os nomes das variáveis, métodos, contrutores, classes, interfaces, pacotes...
 
-            2) Não é possível utilizar palavras reservadas
-                --> boolean, public, class, static, void
+			2) Não é possível utilizar palavras reservadas
+				--> boolean, public, class, static, void
 
-            Obs#4: main não é uma palavra reservada, portanto pode ser utilizado
+				Obs#1: main não é uma palavra reservada, portanto pode ser utilizado
 
-            3) Não é possível utilizar valores literais ( true, false, null )
+			3) Não é possível utilizar valores literais ( true, false, null )
 
-            4) É possível utilizar caracteres unicode ( números, letras, caracteres especiais, $ e _ )
-                --> bonitão, peça, botinao04444$$, boni_to;
+			4) É possível utilizar caracteres unicode ( números, letras, caracteres especiais, $ e _ )
+				--> bonitão, peça, botinao04444$$, boni_to;
 
-            5) Não é possível caracteres especiais
-                --> cas#tigo; [ cerquilha '#' não pode ser utilizado ]
+			5) Não é possível caracteres especiais
+				--> cas#tigo; [ cerquilha '#' não pode ser utilizado ]
 
-            6) O primeiro caractere não pode ser um número [ pode ser qualquer coisa, menos número ] ;
+			6) O primeiro caractere não pode ser um número [ pode ser qualquer coisa, menos número ] ;
 
-            7) É case sensitive
-                --> int idade;
-                --> int Idade;
-                -->int iDAde;
+			7) É case sensitive
+				--> int idade;
+				--> int Idade;
+				--> int iDAde;
 
-                Obs#5: todas as variáveis exemplificadas acima são válidas. E elas são todas diferentes umas das outras;
+				Obs#2: todas as variáveis exemplificadas acima são válidas. E elas são todas diferentes umas das outras por causa da capitualização;
+
 
 
 17/01/2017: tipos de dados - diferenças entre variaveis de referência a objetos e tipos primitivos
+
+	* Tópico da certificação: "working with java data types - ... 
 
 	* Variáveis primitivas possuem um valor
 		--> A operação de atribuição em variáveis do tipo primitivo faz uma cópia do valor
@@ -275,38 +278,38 @@ Estudos para a Certificação Java SE 7 Programmer I [ 1Z0-803 ]
 
 23/01/2017: tipos de dados - chamadas de métodos nos objetos
 
-    * Call methods on objects
+	* Call methods on objects
 
-    * Para invocar um método de um objeto é utilizado o operador '.' ( ponto );
+	* Para invocar um método de um objeto é utilizado o operador '.' ( ponto );
 
-    Obs#0: Toda as vezes que é desejado acessar um membro de um objeto, é utilizado o operador '.'. Esse membro pode ser um método ou uma variável;
+	Obs#0: Toda as vezes que é desejado acessar um membro de um objeto, é utilizado o operador '.'. Esse membro pode ser um método ou uma variável;
 
-    * Quando um método que tem parâmetros é invocado, é obrigatório informar todos os parâmetros ( se mais de um, separado por vírgula ).
+	* Quando um método que tem parâmetros é invocado, é obrigatório informar todos os parâmetros ( se mais de um, separado por vírgula ).
 
-    Obs#1: Se for informada/passada a quantidade errada de parâmetros, é gerado um erro de compilação;
+	Obs#1: Se for informada/passada a quantidade errada de parâmetros, é gerado um erro de compilação;
 
-    Obs#2: é posível ter quebra de linha entre o tipo do parâmetro e o nome, entre um parâmetro e outro. Não há problema com isso.
+	Obs#2: é posível ter quebra de linha entre o tipo do parâmetro e o nome, entre um parâmetro e outro. Não há problema com isso.
 
-    Obs#3: Os parâmetros também são chamados de argumentos;
+	Obs#3: Os parâmetros também são chamados de argumentos;
 
-    Obs#4: Quando se deseja ter uma quantidade variável de argumentos/parâmetros, é possível utilizar o varargs;
+	Obs#4: Quando se deseja ter uma quantidade variável de argumentos/parâmetros, é possível utilizar o varargs;
 
-    Obs#5: O varargs é um array, ou seja, possui a propriedade length e é possível iterar nele através de um laço de repetição;
+	Obs#5: O varargs é um array, ou seja, possui a propriedade length e é possível iterar nele através de um laço de repetição;
 
-    Obs#6: Quando o varargs é utilizado, há a possibilidade de receber nenhum argumento ( 0 argumentos );
+	Obs#6: Quando o varargs é utilizado, há a possibilidade de receber nenhum argumento ( 0 argumentos );
 
-    Obs#7: Não dá para misturar tipos de dados usando varargs. O Varargs é utilizado apenas para quantidade variável de argumentos;
+	Obs#7: Não dá para misturar tipos de dados usando varargs. O Varargs é utilizado apenas para quantidade variável de argumentos;
 
-    Obs#8: O Varargs deve ser o último argumento/parâmetro do método;
-        --> Caso ele seja colocado numa posição diferente disso, é gerado um erro de compilação;
+	Obs#8: O Varargs deve ser o último argumento/parâmetro do método;
+		--> Caso ele seja colocado numa posição diferente disso, é gerado um erro de compilação;
 
-    Obs#9: um varargs é um array, mas um array não é um varargs;
-        --> Porém, é possível passar um array quando o método espera um varargs - o contrário não;
+	Obs#9: um varargs é um array, mas um array não é um varargs;
+		--> Porém, é possível passar um array quando o método espera um varargs - o contrário não;
 
-    Obs#10: A ordem dos argumentos devem ser mantidas, caso contrário, é gerado um erro na compilação;
+	Obs#10: A ordem dos argumentos devem ser mantidas, caso contrário, é gerado um erro na compilação;
 
-    * Quando um método que tem um dado de retorno é invocado, não é obrigatório fazer uso do dado retornado;
+	* Quando um método que tem um dado de retorno é invocado, não é obrigatório fazer uso do dado retornado;
 
-    * Quando se desejar chamar um método B dentro de um método A, ambos pertencem a mesma classe, não precisa utilizar o 'this.', ou seja, pode-se chamar diretamente o método pelo nome dele;
+	* Quando se desejar chamar um método B dentro de um método A, ambos pertencem a mesma classe, não precisa utilizar o 'this.', ou seja, pode-se chamar diretamente o método pelo nome dele;
 
-    
+	
